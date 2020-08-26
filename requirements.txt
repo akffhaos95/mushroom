@@ -1,0 +1,6 @@
+flask
+redis
+folium
+requests
+numpy
+pandas
