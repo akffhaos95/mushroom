@@ -7,63 +7,45 @@ import pandas as pd
 
 app = Flask(__name__)
 
+gill_size_data = ['b', 'n']
+gill_color_data = ['b', 'e', 'g', 'h', 'k', 'n' ,'o', 'p' ,'r', 'u', 'w' ,'y']
+buries_data = ['f', 't']
+stalk_shape_data = ['e', 't']
+stalk_color_above_ring = ['b', 'c', 'e' ,'g', 'n', 'o', 'p', 'w', 'y']
+info = [gill_size_data, gill_color_data, buries_data, stalk_shape_data, stalk_color_above_ring]
+name = ['gill-size', 'gill-color', 'burises', 'stalk-shape', 'stalk-color-above-ring']
 #메인 페이지  
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index.html", info = info, name = name)
 
 @app.route("/pred", methods=['POST'])
 def predict():
     if request.method == 'POST':
-      result = request.form
-      pd = make_data(result)
-    model.predict(pd)
+        result = request.form
+        print(result)
+        pred_data = make_data(result)
+        pred = 0
+        pred = model.predict(pred_data)
+        if  pred == 'p': #독버섯
+            print('독버섯')
+        elif pred == 'e': #식용
+            print('식용버섯')
+        else: #오류
+            print('error')
     return render_template("list.html")
 
 def make_data(result):
-    data = pd.DataFrame()
-    gill_size_data = ['b', 'n']
-    gill_color_data = ['b', 'e', 'g', 'h', 'k', 'n' ,'o', 'p' ,'r', 'u', 'w' ,'y']
-    buries_data = ['f', 't']
-    stalk_shape_data = ['e', 't']
-    stalk_color_above_ring = ['b', 'c', 'e' ,'g', 'n', 'o', 'p', 'w', 'y']
+    tmp = 0
+    data = [[0,0, 0,0,0,0,0,0,0,0,0,0,0,0, 0,0, 0,0, 0,0,0,0,0,0,0,0,0]]
+    check = [result['gill-size'], result['gill-color'], result['burises'], result['stalk-shape'],
+             result['stalk-color-above-ring']]
 
-    gill_size = result['gill-size']
-    gill_color = result['gill-color']
-    bruises = result['bruises']
-    stalk_shape = result['stalk-shape']
-    stalk_ring = result['stalk-color-above-ring']
-
-    for i in gill_size_data:
-        if gill_size == i:
-            data['gill-size_'+i] = 1
-        else:
-            data['gill-size_'+i] = 0
-
-    for i in gill_color_data:
-        if gill_color == i:
-            data['gill_color_'+i] = 1
-        else:
-            data['gill_color_'+i] = 0
-
-    for i in buries_data:
-        if bruises == i:
-            data['buries_'+i] = 1
-        else:
-            data['buries_'+i] = 0
-        
-    for i in stalk_shape_data:
-        if stalk_shape == i:
-            data['stalk-shape_'+i] = 1
-        else:
-            data['stalk-shape_'+i] = 0
-
-    for i in stalk_color_above_ring:
-        if stalk_ring == i:
-            data['stalk-color-above-ring_'+i] = 1
-        else:
-            data['stalk-color-above-ring_'+i] = 0
-    print(data.head())
+    for i in range(len(info)):
+        for j in range(len(info[i])):
+            if check[i] == info[i][j]:
+                data[0][tmp+i] = 1
+        tmp += len(info[i])
     return data
 
 if __name__=="__main__":
