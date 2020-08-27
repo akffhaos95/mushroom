@@ -1,10 +1,329 @@
-<form action = "/pred" method = "POST">
-    {% for i in range(name|length) %}
-    <select name="{{name[i]}}">
-    {% for j in range(info[i]|length) %}
-        <option value="{{info[i][j]}}">{{info[i][j]}}</option>
-    {% endfor %}
-    </select>
-{% endfor %}
-<p><input type = "submit" value = "submit" /></p>
-</form>
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sogo Hotel by Colorlib.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="" />
+  <link rel="stylesheet" type="text/css"
+    href="//fonts.googleapis.com/css?family=|Roboto+Sans:400,700|Playfair+Display:400,700">
+
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/css/animate.css">
+  <link rel="stylesheet" href="static/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="static/css/aos.css">
+  <link rel="stylesheet" href="static/css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="static/css/jquery.timepicker.css">
+  <link rel="stylesheet" href="static/css/fancybox.min.css">
+
+  <link rel="stylesheet" href="static/fonts/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="static/fonts/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="static/fonts/fontawesome/css/Cafe24Oneprettynight.css">
+  <link rel="stylesheet" href="static/fonts/fontawesome/css/62570.css">
+
+
+
+  <!-- Theme Style -->
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+
+  <header class="site-header js-site-header">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="index.html" style="font-family: '62570';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.3/62570체.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+          font-size: 25px;">산에서 독버섯 먹은
+            썰 푸는 사이트</a></div>
+        <div class="col-6 col-lg-8">
+
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- END head -->
+
+  <section class="site-hero overlay" style="background-image: url(static/images/mushroom.jpg)"
+    data-stellar-background-ratio="0.5">
+    <div class="container">
+      <div class="row site-hero-inner justify-content-center align-items-center">
+        <div class="col-md-10 text-center" data-aos="fade-up">
+          <span class="custom-caption text-uppercase text-white d-block  mb-3">아름다운 자연! 아름다운 버섯!</span>
+          <h1 class="heading" style=" font-size: 50px;">산에서 독버섯 먹은 썰푼다.jpg</h1>
+        </div>
+      </div>
+    </div>
+
+    <a class="mouse smoothscroll" href="#next">
+      <div class="mouse-icon">
+        <span class="mouse-wheel"></span>
+      </div>
+    </a>
+  </section>
+  <!-- END section -->
+
+  <section class="section bg-light pb-0">
+    <div class="container">
+
+      <div class="row check-availabilty" id="next">
+        <div class="block-32" data-aos="fade-up" data-aos-offset="-200">
+          <h1 style="font-family: '62570';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.3/62570체.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;">버섯 판별 프로그램</h1>
+          <form action = "/pred" method = "POST">
+            <div class="row" style="margin: 30px;">
+
+              <div class="bttttt"style="width: max-content;height: max-content; margin-right: 25px;">
+                <label for="bruise" class="font-weight-bold text-black">멍 유무</label>
+                <div class="field-icon-wrap">
+                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                  <select name="burises" id="children" class="form-control">
+                    <option value="t">있음</option>
+                    <option value="f">없음</option>
+                  </select>
+                </div>
+              </div>
+              <div class="bttttt"style="width: max-content;height: max-content;margin-right: 25px;">
+                <label for="stok_shape" class="font-weight-bold text-black">기둥 모양</label>
+                <div class="field-icon-wrap">
+                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                  <select name="stalk-shape" id="children" class="form-control">
+                    <option value="e">크다</option>
+                    <option value="t">가늘고 길다</option>
+                   </select>
+                </div>
+              </div>
+              <div class="bttttt"style="width: max-content;height: max-content;margin-right: 25px;">
+                <label for="gill_col" class="font-weight-bold text-black">균포 색</label>
+                <div class="field-icon-wrap">
+                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                  <select name="gill-color" id="adults" class="form-control">
+                    <option value="k">검정</option>
+                    <option value="n">갈색</option>
+                    <option value="b">황색</option>
+                    <option value="h">초콜릿색</option>
+                    <option value="g">회색</option>
+                    <option valaue="r">녹색</option>
+                    <option value="o">귤색</option>
+                    <option value="p">분홍색</option>
+                    <option value="u">보라색</option>
+                    <option value="e">빨간색</option>
+                    <option value="w">흰색</option>
+                    <option value="y">노란색</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="bttttt"style="width: max-content;height: max-content;margin-right: 25px;">
+                <label for="gill_size" class="font-weight-bold text-black">균포 크기</label>
+                <div class="field-icon-wrap">
+                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                  <select name="gill-size" id="children" class="form-control">
+                    <option value="b">넓다</option>
+                    <option value="n">좁다</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="bttttt"style="width: max-content;height: max-content;margin-right: 25px;">
+                <label for="stok_col" class="font-weight-bold text-black">기둥 상단 색</label>
+                <div class="field-icon-wrap">
+                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                  <select name="stalk-color-above-ring" id="children" class="form-control">
+                    <option value="n">갈색</option>
+                    <option value="b">황색</option>
+                    <option value="c">계피색</option>
+                    <option value="g">회색</option>
+                    <option value="r">녹색</option>
+                    <option value="p">분홍색</option>
+                    <option value="u">보라색</option>
+                    <option value="e">빨간색</option>
+                    <option value="w">흰색</option>
+                    <option value="y">노란색</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 align-self-end"style="width: max-content;height: max-content;">
+                <button class="btn btn-primary btn-block text-white">Check Availabilty</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-12 col-lg-7 ml-auto order-lg-2 position-relative mb-5" data-aos="fade-up">
+          <figure class="img-absolute">
+            <img src="static/images/skull3.jpg" alt="Image" class="img-fluid">
+          </figure>
+          <img src="static/images/mushroom2.jpg" alt="Image" class="img-fluid rounded">
+        </div>
+        <div class="col-md-12 col-lg-4 order-lg-1" data-aos="fade-up">
+          <h2 class="heading">어서 오세요!</h2>
+          <p class="mb-4">당신이 산에서 버섯을 발견했을 때<br>인공지능을 통해<br>독버섯인지 아닌지를 알려주는 사이트입니다.</p>
+          <p><a href="#" class="btn btn-primary text-white py-2 mr-3">Learn More</a> <span
+              class="mr-3 font-family-serif"><em>or</em></span> 
+              <a href="https://youtu.be/c7G05TByTEc"
+              data-fancybox class="text-uppercase letter-spacing-1">See video</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- END section -->
+  <section class="section testimonial-section">
+    <div class="container">
+      <div class="row justify-content-center text-center mb-5">
+        <div class="col-md-7">
+          <h2 class="heading" data-aos="fade-up"style="font-family: '62570';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.3/62570체.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;">개발에 참여한 사람들</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="js-carousel-2 owl-carousel mb-5" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="testimonial text-center slider-item">
+            <div class="author-image mb-3">
+              <img src="static/images/min.png" alt="Image placeholder" class="rounded-circle mx-auto">
+            </div>
+            <blockquote>
+
+              <p>&ldquo;운전하기 힘들다.&rdquo;</p>
+            </blockquote>
+            <p><em>&mdash; 김민석</em></p>
+          </div>
+
+          <div class="testimonial text-center slider-item">
+            <div class="author-image mb-3">
+              <img src="static/images/rose.jpg" alt="Image placeholder" class="rounded-circle mx-auto">
+            </div>
+            <blockquote>
+              <p>&ldquo;내가 더 최고야.&rdquo;</p>
+            </blockquote>
+            <p><em>&mdash; 박수민</em></p>
+          </div>
+
+          <div class="testimonial text-center slider-item">
+            <div class="author-image mb-3">
+              <img src="static/images/goeun.png" alt="Image placeholder" class="rounded-circle mx-auto">
+            </div>
+            <blockquote>
+
+              <p>&ldquo;내가 최고야.&rdquo;</p>
+            </blockquote>
+            <p><em>&mdash; 이고은</em></p>
+          </div>
+
+
+          <div class="testimonial text-center slider-item">
+            <div class="author-image mb-3">
+              <img src="static/images/sung.png" alt="Image placeholder" class="rounded-circle mx-auto">
+            </div>
+            <blockquote>
+              <p>&ldquo;재필이랑 백년해로&rdquo;</p>
+            </blockquote>
+            <p><em>&mdash; 황성훈</em></p>
+          </div>
+
+          <div class="testimonial text-center slider-item">
+            <div class="author-image mb-3">
+              <img src="static/images/mushroom3.png" alt="Image placeholder" class="rounded-circle mx-auto">
+            </div>
+            <blockquote>
+              <p>&ldquo;아름다운 자연! 아름다운 버섯!&rdquo;</p>
+            </blockquote>
+            <p><em>&mdash; 구재필</em></p>
+          </div>
+
+        </div>
+        <!-- END slider -->
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="section footer-section">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-3 mb-5 pr-md-5 contact-info">
+          <!-- <li>198 West 21th Street, <br> Suite 721 New York NY 10016</li> -->
+          <p><span class="d-block"><span class="ion-ios-location h5 mr-3 text-primary"></span>Address:</span> <span>
+              대구광역시, <br> 달서구 갈산동 971-2</span></p>
+          <p><span class="d-block"><span class="ion-ios-telephone h5 mr-3 text-primary"></span>Phone:</span> <span>
+              053-584-7861</span></p>
+          <p><span class="d-block"><span class="ion-ios-email h5 mr-3 text-primary"></span>Email:</span> <span>
+              clappingmin@naver.com</span></p>
+        </div>
+
+        <div class="col-md-3 mb-5 pr-md-5 contact-info">
+          <!-- <li>198 West 21th Street, <br> Suite 721 New York NY 10016</li> -->
+          <a href="http://www.mushroom114.or.kr/index.html"><span class="d-block">아름다운 버섯나라</span></a>
+          <a href="http://blog.daum.net/mushroom114"><span class="d-block">아름다운 버섯나라</span></a>
+          <a href="http://www.yes24.com/Product/Goods/50312314"><span class="d-block">버섯대사전</span></a>
+          <img src="static/images/mushroom3.png" alt="Image" class="img-fluid rounded">
+        </div>
+        <div class="col-md-3 mb-5">
+          <p>Sign up for our newsletter</p>
+          <form action="#" class="footer-newsletter">
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Email...">
+              <button type="submit" class="btn"><span class="fa fa-paper-plane"></span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row pt-5">
+        <p class="col-md-6 text-left">
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          Copyright &copy;
+          <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i
+            class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p>
+
+        <p class="col-md-6 text-right social">
+          <a href="#"><span class="fa fa-tripadvisor"></span></a>
+          <a href="#"><span class="fa fa-facebook"></span></a>
+          <a href="#"><span class="fa fa-twitter"></span></a>
+          <a href="#"><span class="fa fa-linkedin"></span></a>
+          <a href="#"><span class="fa fa-vimeo"></span></a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="static/js/jquery-3.3.1.min.js"></script>
+  <script src="static/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="static/js/popper.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="static/js/owl.carousel.min.js"></script>
+  <script src="static/js/jquery.stellar.min.js"></script>
+  <script src="static/js/jquery.fancybox.min.js"></script>
+
+
+  <script src="static/js/aos.js"></script>
+
+  <script src="static/js/bootstrap-datepicker.js"></script>
+  <script src="static/js/jquery.timepicker.min.js"></script>
+
+
+
+  <script src="static/js/main.js"></script>
+</body>
+
+</html>

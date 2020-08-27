@@ -23,28 +23,25 @@ def home():
 def predict():
     if request.method == 'POST':
         result = request.form
-        print(result)
         pred_data = make_data(result)
-        pred = 0
         pred = model.predict(pred_data)
         if  pred == 'p': #독버섯
-            print('독버섯')
+            res = '축하합니다! 독버섯입니다!!!!'
         elif pred == 'e': #식용
-            print('식용버섯')
+            res = '아쉽습니다.... 식용버섯입니다....'
         else: #오류
             print('error')
-    return render_template("list.html")
+    return render_template("events.html", res = res)
 
 def make_data(result):
     tmp = 0
     data = [[0,0, 0,0,0,0,0,0,0,0,0,0,0,0, 0,0, 0,0, 0,0,0,0,0,0,0,0,0]]
     check = [result['gill-size'], result['gill-color'], result['burises'], result['stalk-shape'],
              result['stalk-color-above-ring']]
-
     for i in range(len(info)):
         for j in range(len(info[i])):
-            if check[i] == info[i][j]:
-                data[0][tmp+i] = 1
+            if check[i] == info[i][j]: 
+                data[0][tmp+j] = 1
         tmp += len(info[i])
     return data
 
